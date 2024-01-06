@@ -11,9 +11,9 @@ const suma = (a, b) => {
 
 export const FirstApp = ({title,subtitle}) => {
 
-    // if(!title) {
-    //     throw new Error('El titulo no existe')
-    // }
+    if(!title) {
+        throw new Error('El titulo no existe')
+    }
 
     return (
         <>
@@ -27,10 +27,11 @@ export const FirstApp = ({title,subtitle}) => {
 
 // sirve para colocar validaciones a los tipos de datos de los props
 FirstApp.propTypes = {
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    subTitle: PropTypes.string,
 }
 
-FirstApp.defaultProps = {
-    title: 'No hay titulo',
-    subtitle: 'No hay subtitle'
-}
+// FirstApp.defaultProps = {
+//     title: 'No hay titulo',
+//     subtitle: 'No hay subtitle'
+// }
