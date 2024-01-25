@@ -26,6 +26,7 @@ export const MainApp = () => {
                     path='/*'
                     element={<LoginPage />}
                 /> */}
+                {/* Si una url no existe 404 */}
                 <Route 
                     path='/*'
                     element={<Navigate to="/about" />}
