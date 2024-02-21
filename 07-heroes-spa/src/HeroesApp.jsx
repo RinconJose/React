@@ -1,6 +1,10 @@
+import { AppRputer } from "./router/AppRputer"
+
 
 export const HeroesApp = () => {
-  return (
-    <div>HeroesApp</div>
-  )
+    return (
+        <>
+            <AppRputer />
+        </>
+    )
 }
