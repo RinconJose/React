@@ -9,15 +9,12 @@ export const AppRputer = () => {
     return (
         <>
             <Routes>
-
                 <Route path="/login" element={
                     <PublicRoute>
                         <LoginPage />
                     </PublicRoute>
                 }/>
                 {/* <Route path="login" element={<LoginPage />} /> */}
-
-
 
                 <Route path="/*" element={
                     <PrivateRoute>
