@@ -1,7 +1,13 @@
-import { MemoryRouter } from 'react-router-dom';
-import { render, screen } from '@testing-library/react';
+import { MemoryRouter, useNavigate } from 'react-router-dom';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { AuthContext } from '../../../src/auth/context/AuthContext';
 import { Navbar } from '../../../src/ui/components/Navbar';
+
+const mockUseNaavigate = jest.fn()
+jest.mock('react-router-dom', () => ({
+    ...jest.requireActual('react-router-dom'),
+    useNavigate: () => mockUseNaavigate
+}))
 
 describe('Pruebas en el componente de <Navbar/>', () => {
 
@@ -28,6 +34,17 @@ describe('Pruebas en el componente de <Navbar/>', () => {
         expect( screen.getByText('Jose') ).toBeTruthy();
     })
     test('debe llamar el logout y navigate cuando se hace clicl en el botton', () => {
+        render(
+            <AuthContext.Provider value={contextValue}>
+                <MemoryRouter>
+                    <Navbar />
+                </MemoryRouter>
+            </AuthContext.Provider>
+        )
+        const logoutBtn = screen.getByRole('button');
+        fireEvent.click( logoutBtn )
 
+        expect(contextValue.logout).toHaveBeenCalled()
+        expect(mockUseNaavigate).toHaveBeenCalledWith('/login', {'replace':true})
     })
 })
